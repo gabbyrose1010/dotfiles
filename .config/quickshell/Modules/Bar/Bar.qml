@@ -1,6 +1,7 @@
 import qtQuick
 import Quickshell
 import Quickshell.Hyprland
+import "./Components/"
 
 PanelWindow {
     id: panel

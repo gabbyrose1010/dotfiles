@@ -1,7 +1,7 @@
 import Quickshell
 import QtQuick
 import Quickshell.Io
-
+import "~/dotfiles/.config/quickshell/Info/Battery.qml"
 //Rectangle {
     //id: root
 

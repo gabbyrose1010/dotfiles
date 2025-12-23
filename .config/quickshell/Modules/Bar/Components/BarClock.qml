@@ -2,7 +2,7 @@ import Quickshell
 import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
-
+import "~/dotfiles/.config/quickshell/Info/DateTime.qml"
 Item {
     id: root
 

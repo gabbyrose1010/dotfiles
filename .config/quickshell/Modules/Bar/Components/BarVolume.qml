@@ -2,6 +2,7 @@ import Quickshell
 import QtQuick
 import Quickshell.Io
 import QtQuick.Layouts
+import "~/dotfiles/.config/quickshell/Info/Volume.qml"
 
 RowLayout{
 //Rectangle {
