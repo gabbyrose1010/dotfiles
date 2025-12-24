@@ -2,7 +2,7 @@ import Quickshell
 import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
-import "~/dotfiles/.config/quickshell/Info/DateTime.qml"
+import "./SymLinks/"
 Item {
     id: root
 
@@ -11,7 +11,7 @@ Item {
     
     Text {
         anchors.centerIn: parent
-        text: BarClockTime.dateTime(Theming.barClockFormat)
+        text: DateTime.dateTime(Theming.barClockFormat)
         color: Theming.colSec
         font { family: Theming.fontFamily; pixelSize: Theming.fontSize; bold: true }
     }

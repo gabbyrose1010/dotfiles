@@ -1,6 +1,7 @@
-import qtQuick
+import QtQuick
 import Quickshell
 import Quickshell.Hyprland
+import QtQuick.Layouts
 import "./Components/"
 
 PanelWindow {
@@ -23,7 +24,7 @@ PanelWindow {
     Rectangle {
         id: bar
         anchors.fill: parent
-        color: #1a1a1a
+        color: "#1a1a1a"
         radius: 0
         border.color: "#333333"
         border.width: 3
@@ -39,7 +40,8 @@ PanelWindow {
             leftMargin: 8
         }
 
-        // widgets will go here
+        // components
+        Workspaces {}
     }
 
     // center side
@@ -51,7 +53,8 @@ PanelWindow {
             verticalCenter: parent.verticalCenter
         }
 
-        // widget(s) will go here (will need to be edited if more than clock)
+        // components
+        BarClock {}
     }
 
     // right side
@@ -59,9 +62,9 @@ PanelWindow {
         id: rightSide
 
         anchors {
-            right: parents.right
+            right: parent.right
             verticalCenter: parent.verticalCenter
-            rightMargin: -2 // OH SHIT I GET IT NOW
+            rightMargin: 8
         }
 
         height: parent.height
@@ -69,14 +72,18 @@ PanelWindow {
 
         Row {
             id: rightRow
+            spacing: 10
 
             anchors {
-                right: parent.right
-                verticalCenter: parent.verticalCenter
-                spacing: 8
+                right: rightSide.right
+                verticalCenter: rightSide.verticalCenter
             }
 
-            // widgets will go here
+            // components
+            BarBattery {}
+            BarVolume {}
+            BarBrightness {}
+            BarWifi {}
         }
     }
 }

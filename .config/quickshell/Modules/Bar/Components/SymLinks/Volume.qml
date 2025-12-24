@@ -1,0 +1,1 @@
+/home/meow/dotfiles/.config/quickshell/Info/Volume.qml

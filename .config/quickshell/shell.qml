@@ -1,6 +1,6 @@
 import Quickshell
 import QtQuick
-import "./Modules/Bar/Bar.qml"
+import "./Modules/Bar/"
 
 ShellRoot {
     id: root

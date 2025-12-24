@@ -10,4 +10,5 @@ Singleton {
                         : wifi ? "󰤫"
                         : "󰖩"
     property string name: SystemStats.wifiNet
+    property string shortName: name.substring(0,4)
 }

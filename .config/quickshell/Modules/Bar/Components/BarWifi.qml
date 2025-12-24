@@ -1,3 +1,13 @@
 import Quickshell
 import QtQuick
-import "~/dotfiles/.config/quickshell/Info/Wifi.qml"
+import "./SymLinks/"
+
+Text {
+    text: Wifi.icon + " " + Wifi.shortName
+    color: Theming.colSec
+    font {
+        family: Theming.fontFamily
+        pixelSize: Theming.fontSize
+        bold: true 
+    }    
+}
