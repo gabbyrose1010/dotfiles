@@ -18,8 +18,11 @@ Singleton {
     readonly property var battery: UPower.displayDevice
     property real percentage: battery?.percentage ?? 0
     property int batteryLevel: Math.round(percentage * 100)
-    property bool isCharging: battery?.state === UPowerDevice.Charging   
-    property bool isFullyCharged: battery?.state === UPowerDevice.FullyCharged
+    property bool isCharging: (battery?.state === UPowerDevice.Charging)
+                           || (battery?.state === UPowerDevice.FullyCharged 
+                               && percentage != 100)   
+    property bool isFullyCharged: (battery?.state === UPowerDevice.FullyCharged)
+                                    && (percentage == 100)
     property bool isLow: batteryLevel <= 25 && !isCharging
     property bool isCritical: batteryLevel <= 15 && !isCharging
 
@@ -51,10 +54,42 @@ Singleton {
     property int brightPerc: Math.round((brightNum / brightMax) * 100)
 
     //wifi network stuff
-    property bool wifiEnabled: true
-    property string wifiNet: "No Wifi"
+    property bool wifiEnabled: false
+    property string wifiNet: " "
     //property int wifiStrength: 0     to be implemented
 
+    //bluetooth stuff
+    property bool blueEnabled: false
+    property string blueName: " "
+
+    //bluetooth enabled process
+    Process{
+        id: blueStatusProc
+        running: true
+        command: ["systemctl", "is-active", "bluetooth"]
+        stdout: StdioCollector {
+            onStreamFinished: {
+                root.blueEnabled = text.trim() === "active"
+            }
+        }    
+    }    
+
+    //bluetooth name process
+    //lowkey dont know how this is gonna work with multiple devices
+    //oh well
+    Process {
+        id: blueDevProc
+        running: true
+        command: ["bluetoothctl", "devices", "Paired"]
+        stdout: StdioCollector {
+            onStreamFinished: {
+                var p = text.trim().split(" ")
+                root.blueName = p[2]
+            }    
+        }    
+    }
+
+    //wifi enabled process
     Process {
         id: wifiStatusProc
         running: true
@@ -70,6 +105,7 @@ Singleton {
         }
     }
 
+    //wifi name process
     Process {
         id: wifiNetProc
         running: true
@@ -81,6 +117,7 @@ Singleton {
         }
     }
 
+    //brightness process
     Process {
         id: brightProc
         command: ["brightnessctl", "-d", "intel_backlight", "get"]
@@ -91,6 +128,7 @@ Singleton {
         }
     }
 
+    //volume process
     Process {
         id: volProc
         command: ["pamixer", "--get-volume"]
@@ -101,6 +139,7 @@ Singleton {
         }
     }    
 
+    //volume mute process
     Process {
         id: muteProc
         command: ["pamixer", "--get-mute"]
@@ -111,6 +150,7 @@ Singleton {
         }
     }
 
+    //cpu process
     Process {
         id: cpuProc
         command: ["sh", "-c", "head -1 /proc/stat"]
@@ -129,7 +169,8 @@ Singleton {
         }
         Component.onCompleted: running = true
     }
- 
+
+    //memory process
     Process {
         id: memProc
         command: ["sh", "-c", "free | grep Mem"]
@@ -154,6 +195,9 @@ Singleton {
             memProc.running = true
             wifiStatusProc.running = true
             wifiNetProc.running = true
+            blueStatusProc.running = true
+            blueDevProc.running = true
+
         }
     }
 

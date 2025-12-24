@@ -4,7 +4,7 @@ import Quickshell.Io
 import "./SymLinks/"
 
 Text {
-    text: Battery.icon + " " + Battery.percent + "%"
+    text: Battery.icon + " " + Battery.percent
     color: Theming.colSec
     font { 
         family: Theming.fontFamily 

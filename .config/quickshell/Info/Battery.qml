@@ -5,24 +5,23 @@ import QtQuick
 
 Singleton {
     id: root
-
-    property bool ten: SystemStats.batteryLevel <= 15
-    property bool thirty: SystemStats.batteryLevel <= 25 && !ten
-    property bool fourty: SystemStats.batteryLevel <= 40 && !thirty
-    property bool sixty: SystemStats.batteryLevel <= 60 && !fourty
-    property bool eighty: SystemStats.batteryLevel <= 80 && !sixty
-    property string noCharge: ten ? "󱟩" 
-                            : thirty ? "󰁻" 
-                            : fourty ? "󰁽"
-                            : sixty ? "󰁿" 
-                            : eighty ? "󰂁" : "󱈑"
-    property string yesCharge: ten ? "󰢜" 
-                             : thirty ? "󰂇"
-                             : fourty ? "󰂈" 
-                             : sixty ? "󰂉" 
-                             : eighty ? "󰂊" : "󱈑"
+    
+    property string percent: SystemStats.batteryLevel
+    property string noCharge: percent <= 15 ? "󱟩" 
+                            : percent <= 25 ? "󰁻" 
+                            : percent <= 40 ? "󰁽"
+                            : percent <= 60 ? "󰁿" 
+                            : percent <= 80 ? "󰂁" 
+                            : percent == 100 ? "󱈑"
+                            : "󰂂"
+    property string yesCharge: percent <= 15 ? "󰢜" 
+                             : percent <= 25 ? "󰂇"
+                             : percent <= 40 ? "󰂈" 
+                             : percent <= 60 ? "󰂉" 
+                             : percent <= 80 ? "󰂊" 
+                             : percent == 100 ? "󱈑"
+                             : "󰂋"
 
     //things to grab
     property string icon: SystemStats.isCharging ? yesCharge : noCharge
-    property string percent: SystemStats.batteryLevel
 }

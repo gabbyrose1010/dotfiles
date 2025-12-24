@@ -3,7 +3,8 @@ import QtQuick
 import "./SymLinks/"
 
 Text {
-    text: Wifi.icon + " " + Wifi.shortName
+    text: Wifi.displayString ? Wifi.icon + " " + Wifi.shortName
+        : Wifi.icon
     color: Theming.colSec
     font {
         family: Theming.fontFamily

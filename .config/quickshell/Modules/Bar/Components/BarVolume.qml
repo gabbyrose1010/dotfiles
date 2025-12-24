@@ -3,7 +3,7 @@ import QtQuick
 import "./SymLinks/"
 
 Text {
-    text: Volume.icon + " " + Volume.percent + "%"
+    text: Volume.icon + " " + Volume.percent
     color: Theming.colSec
     font { 
         family: Theming.fontFamily 

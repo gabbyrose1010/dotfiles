@@ -84,6 +84,7 @@ PanelWindow {
             BarVolume {}
             BarBrightness {}
             BarWifi {}
+            BarBluetooth {}
         }
     }
 }
