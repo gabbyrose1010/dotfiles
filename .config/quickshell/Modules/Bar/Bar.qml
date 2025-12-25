@@ -3,31 +3,32 @@ import Quickshell
 import Quickshell.Hyprland
 import QtQuick.Layouts
 import "./Components/"
+import "./Components/SymLinks/"
 
 PanelWindow {
     id: panel
-    
+
     anchors {
         top: true
         left: true
         right: true
     }
 
-    implicitHeight: 30
+    implicitHeight: Theming.barHeight
 
     margins {
-        top: 0
-        left: 0
-        right: 0
+        top: Theming.barTop
+        left: Theming.barLeft
+        right: Theming.barRight
     }
 
     Rectangle {
         id: bar
         anchors.fill: parent
-        color: "#1a1a1a"
+        color: Theming.colBg
         radius: 0
-        border.color: "#333333"
-        border.width: 3
+        border.color: Theming.colBord
+        border.width: Theming.borderWidth
     }
 
     // left side
@@ -86,5 +87,23 @@ PanelWindow {
             BarWifi {}
             BarBluetooth {}
         }
+    }
+
+    // pop up window
+    PopupWindow {
+        anchor.window: panel
+        anchor.rect.y: parentWindow.height + Theming.popTop
+        color: "#20ffffff"
+        property string location: Theming.popLoc === 
+                                 ("right" || ("left" || "center")) 
+                                 ? Theming.popLoc : "right"
+                                 // dont judge the formatting
+                                 // im on a small window :p
+        anchor.rect.x: location == "right" ? (parentWindow.width - width)
+                     : location == "center" ? (parentWindow.width / 2 - width / 2)
+                     : 0
+        implicitWidth: 500
+        implicitHeight: 500
+        visible: true
     }
 }
