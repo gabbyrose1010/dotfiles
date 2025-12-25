@@ -105,5 +105,12 @@ PanelWindow {
         implicitWidth: 500
         implicitHeight: 500
         visible: true
+        //Rectangle {
+            //anchors.top: parent.top
+            //anchors.right: parent.right
+            //Text { text: "hi hello" }
+        //}
+        //Text { text: "hello" }
+        Popup { name: "hello" } 
     }
 }
