@@ -93,7 +93,8 @@ PanelWindow {
     PopupWindow {
         anchor.window: panel
         anchor.rect.y: parentWindow.height + Theming.popTop
-        color: "#20ffffff"
+        color: "transparent"
+        mask: Region { item: pop }
         property string location: Theming.popLoc === 
                                  ("right" || ("left" || "center")) 
                                  ? Theming.popLoc : "right"
@@ -111,6 +112,6 @@ PanelWindow {
             //Text { text: "hi hello" }
         //}
         //Text { text: "hello" }
-        Popup { name: "hello" } 
+        Popup { id: pop; name: "hello" } 
     }
 }

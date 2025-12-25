@@ -8,6 +8,9 @@ Singleton {
 
     // individual theming can be done in Components folders
 
+    //quickshell directory location
+    property string directory: "home/meow/dotfiles/.config/quickshell"
+
     // colors
     property color colBg: "#2a1b26"     // bar and widget bg
     property color colBord: "#eeeeee"   // bar and widget border color
@@ -33,7 +36,10 @@ Singleton {
     // popup sizing
     property int popTop: 10            // margin between popup window and bar
     property string popLoc: "right"   // whether popups are on right, center, or left
-    
+
+    // images
+    property string popImg: catbounceGif
+
     // preset colors
     property color transparent: "#00000000"
     property color white: "#ffffff"
@@ -42,4 +48,15 @@ Singleton {
     // preset fonts
     property string defFont: "JetBrainsMono Nerd Font"
     property string kitFont: "SpaceMono Nerd Font"
+
+    // preset images
+    property string img: "file://" + directory + "/Assets"
+    property string catmojiGif: img + "/Catgifs/blackTextCatmoji.gif"
+    property string catjumpGif: img + "/Catgifs/catGuyJump.gif"
+    property string catpinkcupGif: img + "/Catgifs/catPinkTeaCup.gif"
+    property string catspinGif: img + "/Catgifs/catSpin.gif"
+    property string catstretchGif: img + "/Catgifs/orangeCatStretch.gif"
+    property string catdancetallGif: img + "/Catgifs/tallCatDance.gif"
+    property string catbounceGif: img + "/Catgifs/whiteCatBounce.gif"
+
 }
