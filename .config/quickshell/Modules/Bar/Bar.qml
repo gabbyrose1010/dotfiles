@@ -2,6 +2,8 @@ import QtQuick
 import Quickshell
 import Quickshell.Hyprland
 import QtQuick.Layouts
+import Quickshell.Io
+import QtQuick.Controls
 import "./Components/"
 import "./Components/SymLinks/"
 
@@ -85,12 +87,16 @@ PanelWindow {
             BarVolume {}
             BarBrightness {}
             BarWifi {}
-            BarBluetooth {}
+            BarBluetooth {
+                onClicked: bluePop()
+            }
         }
     }
 
     // pop up window
     PopupWindow {
+        id: popup
+        property string name: "hello"
         anchor.window: panel
         anchor.rect.y: parentWindow.height + Theming.popTop
         color: "transparent"
@@ -105,13 +111,13 @@ PanelWindow {
                      : 0
         implicitWidth: 500
         implicitHeight: 500
-        visible: true
-        //Rectangle {
-            //anchors.top: parent.top
-            //anchors.right: parent.right
-            //Text { text: "hi hello" }
-        //}
-        //Text { text: "hello" }
-        Popup { id: pop; name: "hello" } 
+        visible: false
+        PopUp { id: pop; name: popup.name } 
+    }
+
+    function bluePop() {
+        popup.name = "Bluetooth"
+        popup.visible = popup.visible ? false : true
+        pop.visible = true
     }
 }

@@ -80,11 +80,11 @@ Singleton {
     Process {
         id: blueDevProc
         running: true
-        command: ["bluetoothctl", "devices", "Paired"]
+        command: ["bluetoothctl", "devices", "Connected"]
         stdout: StdioCollector {
             onStreamFinished: {
                 var p = text.trim().split(" ")
-                root.blueName = p[2]
+                root.blueName = data ? p[2] : " "
             }    
         }    
     }
