@@ -18,6 +18,7 @@ Rectangle {
     property variant list: ["Colors", "bears", "you"]
     property variant butList: ["󰴽", "", ""]
 
+    // title bar
     Rectangle {
         id: top
         width: parent.width
@@ -74,6 +75,7 @@ Rectangle {
         }
     }
 
+    // menu
     Rectangle {
         id: menu
         height: root.height
@@ -83,39 +85,42 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 10 + Theming.borderWidth
         anchors.topMargin: 10
+        
+        PopBluetooth {}
 
-        ColumnLayout {
-            anchors.fill: parent
-            spacing: 10
-            Repeater {
-                model: list
+        //ColumnLayout {
+            //anchors.fill: parent
+            //spacing: 10
+            //Repeater {
+                //model: list
 
-                RowLayout {
-                    spacing: 10
-                    Text { 
-                        text: list[index]
-                        color: Theming.colTert
-                        font {
-                            family: Theming.fontFamily
-                            pixelSize: Theming.fontSize
-                            bold: true
-                        }
-                    }
-                    Item { Layout.fillWidth: true }
-                    Repeater {
-                        id: buts    
-                        model: butList
-                        Text {
-                            text: butList[index]
-                        }
-                    }
-                    Item { width: 20 }
-                }
-            }
-            Item { Layout.fillHeight: true }
-        }
+                //RowLayout {
+                    //spacing: 10
+                    //Text { 
+                        //text: list[index]
+                        //color: Theming.colTert
+                        //font {
+                            //family: Theming.fontFamily
+                            //pixelSize: Theming.fontSize
+                            //bold: true
+                        //}
+                    //}
+                    //Item { Layout.fillWidth: true }
+                    //Repeater {
+                        //id: buts    
+                        //model: butList
+                        //Text {
+                            //text: butList[index]
+                        //}
+                    //}
+                    //Item { width: 20 }
+                //}
+            //}
+            //Item { Layout.fillHeight: true }
+        //}
     }
 
+    // image
     Rectangle {
         width: parent.width / 3
         color: "transparent"
