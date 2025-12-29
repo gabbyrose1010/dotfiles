@@ -12,15 +12,15 @@ I will eventually make a proper wiki, but until then... everything goes in the R
 
 Quickshell configuration. 
 
-#### Assets
+#### --Assets
 
 Contains images and such used in Quickshell.
 
-#### ExtraFiles
+#### --ExtraFiles
 
 Files I'm not using anymore but didn't want to delete. Feel free to ignore.
 
-#### Info
+#### --Info
 
 Files for accessing system info. SystemStats.qml does most of the work, then the other files are used to get icons, labels, and such. Theoretically, SystemStats.qml should only be used by other Info files. Everything else should be using specific Info files.
 
