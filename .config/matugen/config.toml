@@ -1,0 +1,11 @@
+[config]
+fallback_color = "#ffbf9b"
+
+[config.wallpaper]
+set = true
+command = "swww"
+arguments = ["img"]
+
+[templates.quickshell]
+input_path = "~/dotfiles/.config/matugen/templates/quickshell.qml"
+output_path = "~/dotfiles/.config/quickshell/Matugen.qml"

@@ -6,10 +6,11 @@ import Quickshell.Io
 import QtQuick.Controls
 import "./Components/"
 import "./Components/SymLinks/"
+import QtQuick.Effects
 
 PanelWindow {
     id: panel
-
+    color: "transparent"
     anchors {
         top: true
         left: true
@@ -28,9 +29,8 @@ PanelWindow {
         id: bar
         anchors.fill: parent
         color: Theming.colBg
-        radius: 0
         border.color: Theming.colBord
-        border.width: Theming.borderWidth
+        border.width: 0
     }
 
     // left side

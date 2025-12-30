@@ -2,6 +2,7 @@ pragma Singleton
 
 import Quickshell
 import QtQuick
+import qs
 
 Singleton {
     id: root
@@ -12,13 +13,13 @@ Singleton {
     property string directory: "home/meow/dotfiles/.config/quickshell"
 
     // colors
-    property color colBg: "#2a1b26"     // bar and widget bg
-    property color colBord: "#eeeeee"   // bar and widget border color
+    property color colBg: Matugen.bg     // bar and widget bg
+    property color colBord: Matugen.out   // bar and widget border color
     property color colFg: "#a9b1d6"
     property color colMuted: "#444b6a"
-    property color colPrim: "#0db9d7"
-    property color colSec: "#7aa2f7"    // bar text color
-    property color colTert: "#e0af68"
+    property color colPrim: Matugen.two
+    property color colSec: Matugen.one    // bar text color
+    property color colTert: Matugen.three
 
     // fonts and formats
     property string fontFamily: kitFont
@@ -28,7 +29,7 @@ Singleton {
 
     // bar sizing
     property int barHeight: 30    // bar thickness
-    property int borderWidth: 3   // border thickness for bar and popups
+    property int borderWidth: 2   // border thickness for bar and popups
     property int barTop: 0        // margin between screen top and bar
     property int barLeft: 0       // margin between screen left and bar
     property int barRight: 0      // margin between screen right and bar
@@ -36,6 +37,11 @@ Singleton {
     // popup sizing
     property int popTop: 10            // margin between popup window and bar
     property string popLoc: "right"   // whether popups are on right, center, or left
+
+    // border settings
+    property bool borders: true
+    property int bordWidth: 10
+    property int round: 15
 
     // images
     property string popImg: catbounceGif

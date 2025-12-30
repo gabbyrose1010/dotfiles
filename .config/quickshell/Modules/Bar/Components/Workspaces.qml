@@ -3,6 +3,7 @@ import Quickshell.Wayland
 import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
+import qs
 
 Item {
 id: root
@@ -16,9 +17,13 @@ RowLayout{
             anchors.verticalCenter: work.verticalCenter
             property var ws: Hyprland.workspaces.values.find(w => w.id === index + 1)
             property bool isActive: Hyprland.focusedWorkspace?.id === (index + 1)
-            text: index + 1
-            color: isActive ? "#0db9d7" : (ws ? "#7aa2f7" : "#444b6a")
-            font { pixelSize: 14; bold: true }
+            text: ws ? "󰄛" : ""
+            color: isActive ? Theming.colTert : (ws ? Theming.colSec 
+            : Theming.colPrim)
+            font { 
+                pixelSize: ws ? Theming.fontSize : Theming.fontSize * 0.5
+                bold: true 
+            }
 
             //MouseArea {
                 //anchors.fill: parent
